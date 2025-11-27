@@ -1,0 +1,1038 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solo Vivo - Educação, Tecnologia e Sustentabilidade</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: #F1EDE1;
+            color: #212121;
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, #2E7D32, #1B5E20);
+            color: white;
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        h1 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        nav {
+            display: flex;
+            gap: 25px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            padding: 8px 15px;
+            border-radius: 5px;
+        }
+
+        nav a:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-2px);
+        }
+
+        .banner {
+            background: linear-gradient(rgba(46, 125, 50, 0.8), rgba(27, 94, 32, 0.9)), 
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%23795548" width="1200" height="600"/><path fill="%238D6E63" d="M0 400 Q 300 350 600 400 T 1200 400 V 600 H 0 Z"/></svg>');
+            background-size: cover;
+            background-position: center;
+            padding: 120px 20px;
+            text-align: center;
+            color: white;
+            animation: fadeIn 1s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .banner h2 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 3em;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .banner p {
+            font-size: 1.3em;
+            margin-bottom: 30px;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            background: #2E7D32;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 25px;
+            font-size: 1em;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn:hover {
+            background: #1B5E20;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(46, 125, 50, 0.4);
+        }
+
+        .btn-secondary {
+            background: #795548;
+        }
+
+        .btn-secondary:hover {
+            background: #5D4037;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        section {
+            margin-bottom: 80px;
+        }
+
+        h3 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2.2em;
+            color: #2E7D32;
+            margin-bottom: 20px;
+            border-left: 5px solid #2E7D32;
+            padding-left: 15px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 25px rgba(46, 125, 50, 0.2);
+        }
+
+        .card h4 {
+            font-family: 'Poppins', sans-serif;
+            color: #2E7D32;
+            font-size: 1.5em;
+            margin-bottom: 15px;
+        }
+
+        .analises-list {
+            list-style: none;
+            padding: 20px 0;
+        }
+
+        .analises-list li {
+            padding: 12px;
+            margin: 8px 0;
+            background: #A5D6A7;
+            border-radius: 8px;
+            transition: all 0.3s;
+        }
+
+        .analises-list li:hover {
+            background: #81C784;
+            transform: translateX(10px);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #2E7D32;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #A5D6A7;
+            border-radius: 8px;
+            font-family: 'Roboto', sans-serif;
+            transition: all 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #2E7D32;
+            box-shadow: 0 0 10px rgba(46, 125, 50, 0.2);
+        }
+
+        .artigos-grid {
+            display: grid;
+            gap: 25px;
+        }
+
+        .artigo-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            border-left: 5px solid #2E7D32;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+            transition: all 0.3s;
+        }
+
+        .artigo-card:hover {
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+            transform: translateX(5px);
+        }
+
+        .categoria-tag {
+            display: inline-block;
+            background: #A5D6A7;
+            color: #1B5E20;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 500;
+            margin-right: 10px;
+        }
+
+        footer {
+            background: #212121;
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            margin: 20px 0;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            nav {
+                flex-direction: column;
+                gap: 10px;
+                text-align: center;
+            }
+
+            .banner h2 {
+                font-size: 2em;
+            }
+
+            .grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .app-screenshots {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+
+        .screenshot {
+            width: 200px;
+            height: 350px;
+            background: linear-gradient(135deg, #A5D6A7, #81C784);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            font-weight: 500;
+            color: #1B5E20;
+        }
+
+        .beneficiarios {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .beneficiario-item {
+            background: #A5D6A7;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            font-weight: 500;
+            color: #1B5E20;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            max-width: 600px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .close-modal {
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            color: #795548;
+        }
+
+        .close-modal:hover {
+            color: #2E7D32;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="header-content">
+        <h1>🌱 Solo Vivo</h1>
+        <nav>
+            <a href="#sobre">Sobre</a>
+            <a href="#laboratorio">Laboratório</a>
+            <a href="#cartilha">Cartilha</a>
+            <a href="#app">Aplicativo</a>
+            <a href="#artigos">Artigos</a>
+            <a href="#contato">Contato</a>
+        </nav>
+    </div>
+</header>
+
+<div class="banner">
+    <h2>Cuidar do Solo é Cuidar da Vida</h2>
+    <p>Educação, Tecnologia e Sustentabilidade no Campo</p>
+    <div class="cta-buttons">
+        <a href="#laboratorio" class="btn">Laboratório</a>
+        <a href="#cartilha" class="btn">Cartilha e Atividades</a>
+        <a href="#app" class="btn">Aplicativo Solo Vivo</a>
+    </div>
+</div>
+
+<div class="container">
+    <section id="sobre">
+        <h3>Sobre o Projeto Solo Vivo</h3>
+        <p style="font-size: 1.1em; line-height: 1.8;">
+            O <strong>Projeto Solo Vivo</strong> integra ciência, educação ambiental e tecnologia para promover práticas agrícolas sustentáveis nas comunidades rurais, escolas, universidades e instituições públicas. Nossa missão é transformar a relação com o solo através do conhecimento científico acessível e ferramentas práticas.
+        </p>
+        
+        <div class="grid">
+            <div class="card">
+                <h4>🎯 Objetivos</h4>
+                <ul style="list-style-position: inside;">
+                    <li>Diagnóstico preciso dos solos</li>
+                    <li>Educação através de materiais didáticos</li>
+                    <li>Aplicativo para acompanhamento contínuo</li>
+                    <li>Engajamento comunitário e extensão rural</li>
+                </ul>
+            </div>
+            
+            <div class="card">
+                <h4>🔬 Origem</h4>
+                <p>
+                    Nascido da integração entre o Laboratório de Química Ambiental e projetos de Extensão Rural, o Solo Vivo representa uma ponte entre academia, campo e comunidade.
+                </p>
+            </div>
+        </div>
+
+        <h4 style="font-family: 'Poppins', sans-serif; color: #2E7D32; margin-top: 40px; font-size: 1.5em;">👥 Beneficiários</h4>
+        <div class="beneficiarios">
+            <div class="beneficiario-item">🌾 Agricultores Familiares</div>
+            <div class="beneficiario-item">🎓 Estudantes Técnicos e Universitários</div>
+            <div class="beneficiario-item">🏛️ Secretarias de Agricultura</div>
+            <div class="beneficiario-item">🌍 Público Geral Interessado</div>
+        </div>
+    </section>
+
+    <section id="laboratorio">
+        <h3>🔬 Laboratório de Análise de Solo</h3>
+        
+        <div style="background: linear-gradient(135deg, #FFA726, #FF9800); color: white; padding: 20px; border-radius: 10px; text-align: center; margin-bottom: 30px; box-shadow: 0 4px 15px rgba(255, 152, 0, 0.3);">
+            <h4 style="color: white; font-size: 1.8em; margin: 0; font-weight: bold;">⚠️ EM DESENVOLVIMENTO ⚠️</h4>
+            <p style="margin: 10px 0 0 0; font-size: 1.1em;">Laboratório em fase de estruturação e implementação</p>
+        </div>
+        
+        <p style="font-size: 1.1em; margin-bottom: 30px;">
+            Oferecemos análises completas e precisas para auxiliar no manejo sustentável do seu solo.
+        </p>
+
+        <div class="grid">
+            <div class="card">
+                <h4>Tipos de Análises</h4>
+                <ul class="analises-list">
+                    <li>📊 pH do solo</li>
+                    <li>⚡ Condutividade elétrica</li>
+                    <li>🌿 Nitrogênio (N)</li>
+                    <li>💎 Fósforo (P)</li>
+                    <li>🔸 Potássio (K)</li>
+                    <li>💧 Umidade</li>
+                    <li>🍂 Matéria Orgânica</li>
+                    <li>🏔️ Textura do solo</li>
+                    <li>🔬 CTC (Capacidade de Troca Catiônica)</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h4>Agendar Análise</h4>
+                <div style="background: #FFF3E0; padding: 15px; border-radius: 8px; margin-bottom: 15px; border-left: 4px solid #FF9800;">
+                    <strong style="color: #E65100;">⚠️ EM DESENVOLVIMENTO</strong>
+                </div>
+                <button class="btn" onclick="alert('Funcionalidade em desenvolvimento. Em breve você poderá agendar análises pelo site!')">
+                    📅 Solicitar Análise
+                </button>
+                <p style="margin-top: 20px;">
+                    Preencha o formulário e nossa equipe entrará em contato para agendar a coleta e análise das amostras.
+                </p>
+            </div>
+
+            <div class="card">
+                <h4>Relatórios</h4>
+                <div style="background: #FFF3E0; padding: 15px; border-radius: 8px; margin-bottom: 15px; border-left: 4px solid #FF9800;">
+                    <strong style="color: #E65100;">⚠️ EM DESENVOLVIMENTO</strong>
+                </div>
+                <p>
+                    Receba relatórios detalhados com gráficos de pH, NPK e recomendações personalizadas para o manejo do seu solo.
+                </p>
+                <button class="btn" style="margin-top: 15px;" onclick="alert('Funcionalidade em desenvolvimento. Em breve você poderá visualizar relatórios exemplo!')">📄 Ver Exemplos de Relatórios</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="cartilha">
+        <h3>📚 Cartilha Educativa</h3>
+        <p style="font-size: 1.1em; margin-bottom: 30px;">
+            <strong>"Cuidar do Solo é Cuidar da Vida"</strong> - Material didático ilustrado e acessível para todos.
+        </p>
+
+        <div class="card" style="background: linear-gradient(135deg, #A5D6A7, #81C784); padding: 40px; text-align: center; margin-bottom: 30px;">
+            <h4 style="color: #1B5E20; font-size: 2em; margin-bottom: 20px;">📖 Cartilha: Cuidar do Solo é Cuidar da Vida!</h4>
+            <p style="color: #1B5E20; font-size: 1.2em; margin-bottom: 25px;">
+                Material educativo completo com ilustrações, atividades práticas e conhecimentos essenciais sobre o solo.
+            </p>
+            <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+                <a href="https://drive.google.com/uc?export=download&id=1h3Rljk5OdYYfpv8ihgtdRO37AMAJH72P" target="_blank" class="btn" style="font-size: 1.1em; padding: 18px 35px;">
+                    📥 Baixar Cartilha PDF
+                </a>
+                <button class="btn btn-secondary" style="font-size: 1.1em; padding: 18px 35px;" onclick="document.getElementById('modal-cartilha').style.display='flex'">
+                    👁️ Visualizar Online
+                </button>
+            </div>
+            <p style="color: #2E7D32; margin-top: 20px; font-weight: 500;">
+                ✅ Download gratuito • 100% ilustrado • Atividades práticas incluídas
+            </p>
+        </div>
+
+        <div class="grid">
+            <div class="card">
+                <h4>📖 Conteúdo da Cartilha</h4>
+                <ul style="list-style-position: inside; line-height: 2;">
+                    <li>O que é o solo?</li>
+                    <li>Importância do solo para a vida</li>
+                    <li>Análises e cuidados essenciais</li>
+                    <li>Práticas sustentáveis</li>
+                    <li>Atividades educativas</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h4>🎯 Para quem é?</h4>
+                <p>
+                    Ideal para educadores, agricultores, estudantes e todos interessados em aprender sobre a importância do cuidado com o solo de forma didática e visual.
+                </p>
+            </div>
+
+            <div class="card">
+                <h4>♿ Acessibilidade</h4>
+                <p>
+                    Material desenvolvido com linguagem clara e ilustrações que facilitam o aprendizado para todos os públicos.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section id="app">
+        <h3>📱 Aplicativo Solo Vivo</h3>
+        <p style="font-size: 1.1em; margin-bottom: 30px;">
+            Leve o conhecimento sobre o solo no seu bolso! Monitore, aprenda e gerencie suas práticas agrícolas.
+        </p>
+
+        <div class="card" style="background: linear-gradient(135deg, #2E7D32, #1B5E20); color: white; padding: 40px; text-align: center; margin-bottom: 30px;">
+            <h4 style="color: white; font-size: 2em; margin-bottom: 20px;">📲 Solo Vivo - Cuide da sua terra</h4>
+            <p style="font-size: 1.2em; margin-bottom: 25px;">
+                Aplicativo completo para Android com análises, monitoramento e educação sobre o solo.
+            </p>
+            <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+                <a href="https://solo-vivo-amigo.lovable.app" target="_blank" class="btn" style="background: white; color: #2E7D32; font-size: 1.1em; padding: 18px 35px;">
+                    📥 Baixar APK Android
+                </a>
+                <button class="btn" style="background: rgba(255,255,255,0.2); border: 2px solid white; font-size: 1.1em; padding: 18px 35px;" onclick="document.getElementById('modal-app').style.display='flex'">
+                    ℹ️ Como Instalar
+                </button>
+            </div>
+            <p style="margin-top: 20px; font-weight: 500;">
+                ✅ Totalmente gratuito • Funciona offline • Interface intuitiva
+            </p>
+        </div>
+
+        <div class="app-screenshots">
+            <div class="screenshot">📊 Dashboard</div>
+            <div class="screenshot">🌱 Monitoramento</div>
+            <div class="screenshot">📚 Educação</div>
+        </div>
+
+        <div class="grid">
+            <div class="card">
+                <h4>🌟 Funcionalidades</h4>
+                <ul style="list-style-position: inside; line-height: 2;">
+                    <li>Registro de análises de solo</li>
+                    <li>Histórico de cultivos</li>
+                    <li>Recomendações personalizadas</li>
+                    <li>Biblioteca educativa</li>
+                    <li>Calculadora de nutrientes</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h4>💻 Requisitos</h4>
+                <p style="line-height: 2;">
+                    <strong>Android 5.0 ou superior</strong><br>
+                    50 MB de espaço livre<br>
+                    Não requer internet após instalação<br>
+                    Interface em português
+                </p>
+            </div>
+
+            <div class="card">
+                <h4>🌐 Versão Web</h4>
+                <p>
+                    Prefere não instalar? Use nossa versão WebApp diretamente no navegador, sem downloads!
+                </p>
+                <a href="https://solo-vivo-amigo.lovable.app" target="_blank" class="btn btn-secondary" style="margin-top: 15px; text-decoration: none;">Acessar WebApp</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="artigos">
+        <h3>📝 Artigos Científicos e Educativos</h3>
+        <p style="font-size: 1.1em; margin-bottom: 30px;">
+            Conteúdos aprofundados sobre solo, agricultura sustentável e práticas de manejo.
+        </p>
+
+        <div class="artigos-grid">
+            <div class="artigo-card">
+                <span class="categoria-tag">Ciência do Solo</span>
+                <span class="categoria-tag">Química do Solo</span>
+                <h4 style="color: #2E7D32; margin: 15px 0;">Capacidade de Troca Catiônica (CTC) em Solo: Conceito, Importância e Cálculo</h4>
+                <p style="color: #666; margin-bottom: 10px;">Por Professor Dr. Antônio Orlando Izolani</p>
+                <p>Entenda o conceito de CTC, sua importância na fertilidade do solo e como realizar os cálculos necessários...</p>
+                <a href="https://drive.google.com/uc?export=download&id=1PbNnSNDOMkwVdf13tgCOtzuwRxreEllu" target="_blank" class="btn" style="margin-top: 15px; text-decoration: none;">📥 Baixar PDF</a>
+            </div>
+
+            <div class="artigo-card">
+                <span class="categoria-tag">Matéria Orgânica</span>
+                <span class="categoria-tag">Fertilidade</span>
+                <h4 style="color: #2E7D32; margin: 15px 0;">A Importância dos Ácidos Húmicos em um Solo</h4>
+                <p style="color: #666; margin-bottom: 10px;">Por Professor Dr. Antônio Orlando Izolani</p>
+                <p>Descubra o papel fundamental dos ácidos húmicos na estrutura, fertilidade e saúde do solo...</p>
+                <a href="https://drive.google.com/uc?export=download&id=1q27pbBkPAPROmvBMfPdkC8WIKJ4S3jpm" target="_blank" class="btn" style="margin-top: 15px; text-decoration: none;">📥 Baixar PDF</a>
+            </div>
+
+            <div class="artigo-card">
+                <span class="categoria-tag">Matéria Orgânica</span>
+                <span class="categoria-tag">Fertilidade</span>
+                <h4 style="color: #2E7D32; margin: 15px 0;">A Importância dos Ácidos Fúlvicos em um Solo</h4>
+                <p style="color: #666; margin-bottom: 10px;">Por Professor Dr. Antônio Orlando Izolani</p>
+                <p>Conheça as características e benefícios dos ácidos fúlvicos para a nutrição vegetal e qualidade do solo...</p>
+                <a href="https://drive.google.com/uc?export=download&id=1qd8u7cdeOoMQPv3NXqhAW-Slh0ntpqrH" target="_blank" class="btn" style="margin-top: 15px; text-decoration: none;">📥 Baixar PDF</a>
+            </div>
+
+            <div class="artigo-card">
+                <span class="categoria-tag">EMBRAPA</span>
+                <span class="categoria-tag">Regiões Tropicais</span>
+                <h4 style="color: #2E7D32; margin: 15px 0;">Conceitos de Fertilidade do Solo e Manejo Adequado para as Regiões Tropicais</h4>
+                <p style="color: #666; margin-bottom: 10px;">Por EMBRAPA</p>
+                <p>Guia técnico sobre fertilidade e manejo de solos tropicais, adaptado às condições brasileiras...</p>
+                <a href="https://drive.google.com/uc?export=download&id=1bCVDIvY-yLBLQTNd1TAOrWcwPuRlStbd" target="_blank" class="btn" style="margin-top: 15px; text-decoration: none;">📥 Baixar PDF</a>
+            </div>
+
+            <div class="artigo-card">
+                <span class="categoria-tag">EMBRAPA</span>
+                <span class="categoria-tag">Análise Laboratorial</span>
+                <h4 style="color: #2E7D32; margin: 15px 0;">Manual de Métodos de Análise de Solo 2017</h4>
+                <p style="color: #666; margin-bottom: 10px;">Por EMBRAPA</p>
+                <p>Manual completo com protocolos e metodologias oficiais para análise física e química de solos...</p>
+                <a href="https://drive.google.com/uc?export=download&id=1lOcI2NA4xJHReq0tJa8wleXSjr4bQykd" target="_blank" class="btn" style="margin-top: 15px; text-decoration: none;">📥 Baixar PDF</a>
+            </div>
+
+            <div class="artigo-card">
+                <span class="categoria-tag">Geologia</span>
+                <span class="categoria-tag">Matéria Orgânica</span>
+                <h4 style="color: #2E7D32; margin: 15px 0;">Turfa: Origens, Formação e Características Geológicas</h4>
+                <p style="color: #666; margin-bottom: 10px;">Por Professor Dr. Antônio Orlando Izolani</p>
+                <p>Estudo sobre a formação, características e importância da turfa como material orgânico...</p>
+                <a href="https://drive.google.com/uc?export=download&id=15LXiIEVUmyY4JiIPfWH4GM02pgC4zDbY" target="_blank" class="btn" style="margin-top: 15px; text-decoration: none;">📥 Baixar PDF</a>
+            </div>
+        </div>
+
+        <button class="btn" style="margin-top: 30px; display: block; margin-left: auto; margin-right: auto;" onclick="document.getElementById('modal-todos-artigos').style.display='flex'">
+            📚 Ver Todas as Categorias
+        </button>
+    </section>
+</div>
+
+<footer id="contato">
+    <div class="footer-content">
+        <h3 style="color: white; border: none; padding: 0;">Entre em Contato</h3>
+        
+        <div class="contact-info">
+            <div class="contact-item">
+                <span>📧</span>
+                <span>antonio.izolani@gmail.com</span>
+            </div>
+            <div class="contact-item">
+                <span>📱</span>
+                <span>+55 21 99249-7260</span>
+            </div>
+            <div class="contact-item">
+                <span>📍</span>
+                <span>Paracambi/RJ</span>
+            </div>
+        </div>
+
+        <p style="margin-top: 30px; border-top: 1px solid #444; padding-top: 20px;">
+            © 2025 Solo Vivo - Educação, Tecnologia e Sustentabilidade no Campo
+        </p>
+    </div>
+</footer>
+
+<!-- Modal de Agendamento -->
+<div id="modal-agendamento" class="modal">
+    <div class="modal-content">
+        <span class="close-modal" onclick="document.getElementById('modal-agendamento').style.display='none'">&times;</span>
+        <h3 style="color: #2E7D32; margin-bottom: 20px;">Solicitar Análise de Solo</h3>
+        
+        <form>
+            <div class="form-group">
+                <label>Nome Completo:</label>
+                <input type="text" placeholder="Seu nome" required>
+            </div>
+
+            <div class="form-group">
+                <label>Propriedade Rural:</label>
+                <input type="text" placeholder="Nome da propriedade" required>
+            </div>
+
+            <div class="form-group">
+                <label>Telefone/WhatsApp:</label>
+                <input type="tel" placeholder="+55 (00) 00000-0000" required>
+            </div>
+
+            <div class="form-group">
+                <label>Email:</label>
+                <input type="email" placeholder="seu@email.com" required>
+            </div>
+
+            <div class="form-group">
+                <label>Tipo de Análise:</label>
+                <select required>
+                    <option value="">Selecione...</option>
+                    <option>Análise Completa (pH, NPK, Textura, MO)</option>
+                    <option>Análise Básica (pH e NPK)</option>
+                    <option>Análise de Fertilidade</option>
+                    <option>Análise Personalizada</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Observações:</label>
+                <textarea rows="4" placeholder="Informações adicionais sobre sua propriedade ou necessidades específicas..."></textarea>
+            </div>
+
+            <button type="submit" class="btn" style="width: 100%;">Enviar Solicitação</button>
+        </form>
+    </div>
+</div>
+
+<!-- Modal da Cartilha -->
+<div id="modal-cartilha" class="modal">
+    <div class="modal-content">
+        <span class="close-modal" onclick="document.getElementById('modal-cartilha').style.display='none'">&times;</span>
+        <h3 style="color: #2E7D32; margin-bottom: 20px;">📖 Cartilha: Cuidar do Solo é Cuidar da Vida</h3>
+        
+        <div style="text-align: center; padding: 20px;">
+            <p style="font-size: 1.1em; margin-bottom: 20px;">
+                Visualize a cartilha completa ou faça o download para ler offline.
+            </p>
+            
+            <div style="background: #F1EDE1; padding: 30px; border-radius: 10px; margin: 20px 0;">
+                <p style="color: #795548; font-size: 0.95em; margin-bottom: 15px;">
+                    📄 A cartilha será exibida aqui em formato interativo ou PDF embarcado
+                </p>
+                <p style="color: #795548;">
+                    Para incorporar: use um PDF viewer ou imagens das páginas
+                </p>
+            </div>
+
+            <a href="https://drive.google.com/uc?export=download&id=1h3Rljk5OdYYfpv8ihgtdRO37AMAJH72P" target="_blank" class="btn" style="font-size: 1.1em; padding: 15px 30px;">
+                📥 Baixar Cartilha Completa (PDF)
+            </a>
+        </div>
+    </div>
+</div>
+
+<!-- Modal do App -->
+<div id="modal-app" class="modal">
+    <div class="modal-content">
+        <span class="close-modal" onclick="document.getElementById('modal-app').style.display='none'">&times;</span>
+        <h3 style="color: #2E7D32; margin-bottom: 20px;">📱 Como Instalar o App Solo Vivo</h3>
+        
+        <div style="line-height: 1.8;">
+            <h4 style="color: #2E7D32; margin-top: 20px;">Passo 1: Baixar o APK</h4>
+            <p>Clique no botão "Baixar APK Android" para fazer o download do arquivo.</p>
+
+            <h4 style="color: #2E7D32; margin-top: 20px;">Passo 2: Permitir Instalação</h4>
+            <p>No seu Android, vá em <strong>Configurações > Segurança</strong> e habilite <strong>"Fontes Desconhecidas"</strong> ou <strong>"Instalar apps desconhecidos"</strong>.</p>
+
+            <h4 style="color: #2E7D32; margin-top: 20px;">Passo 3: Instalar</h4>
+            <p>Abra o arquivo APK baixado e toque em <strong>"Instalar"</strong>.</p>
+
+            <h4 style="color: #2E7D32; margin-top: 20px;">Passo 4: Pronto!</h4>
+            <p>O aplicativo Solo Vivo estará instalado e pronto para uso. 🌱</p>
+
+            <div style="background: #FFF3E0; padding: 15px; border-radius: 8px; margin-top: 20px; border-left: 4px solid #FF9800;">
+                <strong>⚠️ Observação:</strong> O Android pode alertar sobre apps de fontes desconhecidas. Isso é normal para APKs fora da Play Store.
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal de Artigos -->
+<div id="modal-artigo" class="modal">
+    <div class="modal-content" style="max-width: 800px;">
+        <span class="close-modal" onclick="document.getElementById('modal-artigo').style.display='none'">&times;</span>
+        <div id="conteudo-artigo"></div>
+    </div>
+</div>
+
+<!-- Modal Todas Categorias -->
+<div id="modal-todos-artigos" class="modal">
+    <div class="modal-content" style="max-width: 900px;">
+        <span class="close-modal" onclick="document.getElementById('modal-todos-artigos').style.display='none'">&times;</span>
+        <h3 style="color: #2E7D32; margin-bottom: 30px;">📚 Todas as Categorias de Artigos</h3>
+        
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
+            <div style="background: #E8F5E9; padding: 20px; border-radius: 10px; border-left: 5px solid #2E7D32;">
+                <h4 style="color: #2E7D32; margin-bottom: 10px;">🔬 Ciência do Solo</h4>
+                <p style="font-size: 0.9em;">Estudos sobre composição, pH e características físico-químicas do solo.</p>
+            </div>
+            
+            <div style="background: #E8F5E9; padding: 20px; border-radius: 10px; border-left: 5px solid #2E7D32;">
+                <h4 style="color: #2E7D32; margin-bottom: 10px;">🌱 Agricultura Sustentável</h4>
+                <p style="font-size: 0.9em;">Práticas agrícolas que preservam recursos naturais e aumentam produtividade.</p>
+            </div>
+            
+            <div style="background: #E8F5E9; padding: 20px; border-radius: 10px; border-left: 5px solid #2E7D32;">
+                <h4 style="color: #2E7D32; margin-bottom: 10px;">⚗️ Análise Química</h4>
+                <p style="font-size: 0.9em;">Métodos laboratoriais e interpretação de análises de solo.</p>
+            </div>
+            
+            <div style="background: #E8F5E9; padding: 20px; border-radius: 10px; border-left: 5px solid #2E7D32;">
+                <h4 style="color: #2E7D32; margin-bottom: 10px;">🌾 Práticas de Manejo</h4>
+                <p style="font-size: 0.9em;">Técnicas de cultivo, rotação de culturas e manejo integrado.</p>
+            </div>
+            
+            <div style="background: #E8F5E9; padding: 20px; border-radius: 10px; border-left: 5px solid #2E7D32;">
+                <h4 style="color: #2E7D32; margin-bottom: 10px;">♻️ Compostagem</h4>
+                <p style="font-size: 0.9em;">Processos de compostagem e produção de fertilizantes orgânicos.</p>
+            </div>
+            
+            <div style="background: #E8F5E9; padding: 20px; border-radius: 10px; border-left: 5px solid #2E7D32;">
+                <h4 style="color: #2E7D32; margin-bottom: 10px;">👨‍🌾 Extensão Rural</h4>
+                <p style="font-size: 0.9em;">Artigos voltados para agricultores familiares e comunidades rurais.</p>
+            </div>
+            
+            <div style="background: #E8F5E9; padding: 20px; border-radius: 10px; border-left: 5px solid #2E7D32;">
+                <h4 style="color: #2E7D32; margin-bottom: 10px;">🦠 Biologia do Solo</h4>
+                <p style="font-size: 0.9em;">Microorganismos, fauna edáfica e processos biológicos.</p>
+            </div>
+            
+            <div style="background: #E8F5E9; padding: 20px; border-radius: 10px; border-left: 5px solid #2E7D32;">
+                <h4 style="color: #2E7D32; margin-bottom: 10px;">🌿 Fertilidade</h4>
+                <p style="font-size: 0.9em;">Nutrientes essenciais, adubação e correção do solo.</p>
+            </div>
+            
+            <div style="background: #E8F5E9; padding: 20px; border-radius: 10px; border-left: 5px solid #2E7D32;">
+                <h4 style="color: #2E7D32; margin-bottom: 10px;">💧 Conservação</h4>
+                <p style="font-size: 0.9em;">Conservação de solo, água e recursos naturais.</p>
+            </div>
+        </div>
+        
+        <p style="text-align: center; margin-top: 30px; color: #666;">
+            Novos artigos são adicionados regularmente. Continue acompanhando!
+        </p>
+    </div>
+</div>
+
+<script>
+    // Smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        });
+    });
+
+    // Fechar modal ao clicar fora
+    window.onclick = function(event) {
+        const modals = ['modal-agendamento', 'modal-cartilha', 'modal-app', 'modal-artigo', 'modal-todos-artigos'];
+        modals.forEach(modalId => {
+            const modal = document.getElementById(modalId);
+            if (event.target == modal) {
+                modal.style.display = 'none';
+            }
+        });
+    }
+
+    // Conteúdo dos artigos
+    const artigos = {
+        artigo1: {
+            titulo: "A Importância do pH na Fertilidade do Solo",
+            autor: "Equipe Solo Vivo",
+            data: "15 de Janeiro de 2025",
+            categorias: ["Ciência do Solo", "Fertilidade"],
+            conteudo: `
+                <h3 style="color: #2E7D32;">A Importância do pH na Fertilidade do Solo</h3>
+                <p style="color: #666; margin-bottom: 30px;"><strong>Por Equipe Solo Vivo</strong> • 15 de Janeiro de 2025</p>
+                
+                <h4 style="color: #2E7D32; margin-top: 25px;">O que é pH do Solo?</h4>
+                <p>O pH é uma medida que indica se o solo é ácido, neutro ou alcalino. A escala varia de 0 a 14, sendo que valores abaixo de 7 indicam acidez, 7 é neutro e acima de 7 indica alcalinidade. A maioria das culturas agrícolas prefere solos com pH entre 6,0 e 7,0.</p>
+                
+                <h4 style="color: #2E7D32; margin-top: 25px;">Por que o pH é importante?</h4>
+                <p>O pH do solo afeta diretamente a disponibilidade de nutrientes para as plantas. Em solos muito ácidos (pH baixo), nutrientes como fósforo, cálcio e magnésio ficam menos disponíveis. Já em solos alcalinos (pH alto), ferro, manganês e zinco tornam-se escassos.</p>
+                
+                <h4 style="color: #2E7D32; margin-top: 25px;">Como corrigir o pH do solo</h4>
+                <p><strong>Solo ácido:</strong> Aplicação de calcário dolomítico ou calcítico é a forma mais comum de elevar o pH. A quantidade depende da análise do solo e do tipo de cultura.</p>
+                <p><strong>Solo alcalino:</strong> Pode ser corrigido com a aplicação de enxofre elementar ou matéria orgânica ácida.</p>
+                
+                <h4 style="color: #2E7D32; margin-top: 25px;">Recomendações práticas</h4>
+                <ul style="line-height: 2;">
+                    <li>Faça análises de solo regularmente (a cada 2-3 anos)</li>
+                    <li>Corrija o pH antes do plantio</li>
+                    <li>Monitore através de análises periódicas</li>
+                    <li>Considere o tipo de cultura ao escolher o pH ideal</li>
+                    <li>Incorpore matéria orgânica para estabilizar o pH</li>
+                </ul>
+                
+                <p style="margin-top: 30px; padding: 20px; background: #E8F5E9; border-radius: 10px; border-left: 5px solid #2E7D32;">
+                    <strong>💡 Dica:</strong> O pH ideal varia conforme a cultura. Consulte sempre um agrônomo e faça análises laboratoriais antes de qualquer correção.
+                </p>
+            `
+        },
+        artigo2: {
+            titulo: "Compostagem: Transformando Resíduos em Fertilidade",
+            autor: "Equipe Solo Vivo",
+            data: "10 de Janeiro de 2025",
+            categorias: ["Agricultura Sustentável", "Compostagem"],
+            conteudo: `
+                <h3 style="color: #2E7D32;">Compostagem: Transformando Resíduos em Fertilidade</h3>
+                <p style="color: #666; margin-bottom: 30px;"><strong>Por Equipe Solo Vivo</strong> • 10 de Janeiro de 2025</p>
+                
+                <h4 style="color: #2E7D32; margin-top: 25px;">O que é Compostagem?</h4>
+                <p>A compostagem é um processo natural de decomposição de matéria orgânica por microorganismos, transformando resíduos em um adubo rico em nutrientes. É uma prática sustentável que reduz lixo e melhora a qualidade do solo.</p>
+                
+                <h4 style="color: #2E7D32; margin-top: 25px;">Benefícios da Compostagem</h4>
+                <ul style="line-height: 2;">
+                    <li>Aumenta a matéria orgânica do solo</li>
+                    <li>Melhora a estrutura e retenção de água</li>
+                    <li>Fornece nutrientes de forma gradual</li>
+                    <li>Reduz a necessidade de fertilizantes químicos</li>
+                    <li>Diminui resíduos enviados a aterros</li>
+                    <li>Estimula a vida microbiana do solo</li>
+                </ul>
+                
+                <h4 style="color: #2E7D32; margin-top: 25px;">Como fazer compostagem</h4>
+                <p><strong>1. Materiais Verdes (Nitrogênio):</strong></p>
+                <p>Restos de frutas e vegetais, borra de café, esterco animal, grama cortada.</p>
+                
+                <p><strong>2. Materiais Marrons (Carbono):</strong></p>
+                <p>Folhas secas, serragem, palha, papel, papelão.</p>
+                
+                <p><strong>3. Proporção ideal:</strong></p>
+                <p>Misture 1 parte de material verde para 2-3 partes de material marrom.</p>
+                
+                <h4 style="color: #2E7D32; margin-top: 25px;">Processo passo a passo</h4>
+                <ol style="line-height: 2;">
+                    <li>Escolha um local sombreado e com boa drenagem</li>
+                    <li>Monte camadas alternadas de materiais verdes e marrons</li>
+                    <li>Mantenha a umidade (como uma esponja úmida)</li>
+                    <li>Vire a pilha a cada 7-10 dias</li>
+                    <li>O composto estará pronto em 2-4 meses</li>
+                </ol>
+                
+                <h4 style="color: #2E7D32; margin-top: 25px;">Sinais de composto pronto</h4>
+                <p>Cor escura, cheiro de terra, temperatura ambiente e textura uniforme indicam que o composto está maduro e pronto para uso.</p>
+                
+                <p style="margin-top: 30px; padding: 20px; background: #E8F5E9; border-radius: 10px; border-left: 5px solid #2E7D32;">
+                    <strong>⚠️ Evite compostar:</strong> Carnes, laticínios, gorduras, plantas doentes e fezes de animais domésticos.
+                </p>
+            `
+        },
+        artigo3: {
+            titulo: "Manejo Sustentável em Pequenas Propriedades",
+            autor: "Equipe Solo Vivo",
+            data: "5 de Janeiro de 2025",
+            categorias: ["Extensão Rural", "Práticas de Manejo"],
+            conteudo: `
+                <h3 style="color: #2E7D32;">Manejo Sustentável em Pequenas Propriedades</h3>
+                <p style="color: #666; margin-bottom: 30px;"><strong>Por Equipe Solo Vivo</strong> • 5 de Janeiro de 2025</p>
+                
+                <h4 style="color: #2E7D32; margin-top: 25px;">Introdução</h4>
+                <p>Pequenas propriedades rurais desempenham papel fundamental na produção de alimentos e na preservação ambiental. Práticas sustentáveis podem aumentar a produtividade sem comprometer os recursos naturais.</p>
+                
+                <h4 style="color: #2E7D32; margin-top: 25px;">Princípios do Manejo Sustentável</h4>
+                <ul style="line-height: 2;">
+                    <li>Conservação do solo e da água</li>
+                    <li>Diversificação de culturas</li>
+                    <li>Uso eficiente de recursos</li>
+                    <li>Redução de insumos químicos</li>
+                    <li>Integração de atividades agrícolas</li>
+                </ul>
+                
+                <h4 style="color: #2E7D32; margin-top: 25px;">Técnicas Acessíveis</h4>
+                
+                <p><strong>1. Rotação de Culturas</strong></p>
+                <p>Alterne diferentes culturas na mesma área para melhorar a fertilidade, controlar pragas e doenças. Exemplo: milho → feijão → abóbora.</p>
+                
+                <p><strong>2. Cobertura Morta (Mulching)</strong></p>
+                <p>Cubra o solo com palha, folhas ou restos vegetais para conservar umidade, controlar plantas invasoras e adicionar matéria orgânica.</p>
+                
+                <p><strong>3. Adubação Verde</strong></p>
+                <p>Cultive plantas como feijão-de-porco, crotalária ou mucuna para fixar nitrogênio e melhorar a estrutura do solo.</p>
+                
+                <p><strong>4. Captação de Água da Chuva</strong></p>
+                <p>Instale sistemas simples de captação para irrigação nos períodos secos, reduzindo dependência de fontes externas.</p>
+                
+                <p><strong>5. Compostagem e Biofertilizantes</strong></p>
+                <p>Produza seus próprios insumos orgânicos a partir de resíduos da propriedade, reduzindo custos e melhorando o solo.</p>
+                
+                <h4 style="color: #2E7D32; margin-top: 25px;">Controle Natural de Pragas</h4>
+                <ul style="line-height: 2;">
+                    <li>Consórcios de plantas (plantio conjunto estratégico)</li>
+                    <li>Plantas repelentes e atrativas</li>
+                    <li>Controle biológico com inimigos naturais</li>
+                    <li>Armadilhas ecológicas</li>
+                </ul>
+                
+                <h4 style="color: #2E7D32; margin-top: 25px;">Benefícios Econômicos</h4>
+                <p>O manejo sustentável reduz custos com insumos, aumenta a produtividade a longo prazo, melhora a qualidade dos produtos e abre mercados para produtos orgânicos e agroecológicos.</p>
+                
+                <p style="margin-top: 30px; padding: 20px; background: #E8F5E9; border-radius: 10px; border-left: 5px solid #2E7D32;">
+                    <strong>🌱 Lembre-se:</strong> A transição para práticas sustentáveis é gradual. Comece com uma técnica e vá expandindo conforme os resultados aparecem.
+                </p>
+            `
+        }
+    };
+
+    // Função para abrir artigo
+    function abrirArtigo(artigoId) {
+        const artigo = artigos[artigoId];
+        const conteudo = document.getElementById('conteudo-artigo');
+        conteudo.innerHTML = artigo.conteudo;
+        document.getElementById('modal-artigo').style.display = 'flex';
+    }
+</script>
+
+</body>
+</html>
